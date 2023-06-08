@@ -1,0 +1,266 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-color: rgba(1, 183, 232);
+            margin: 0;
+            cursor: url('cursor.png'), auto;
+        }
+        
+        section {
+            padding: 5vh;
+            overflow: hidden;
+        }
+        
+
+        .tammyiscute {
+            width: 800px;
+            padding-bottom: 5vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tammyiscute img {
+            display: inline-block;
+        }
+
+        .tammy {
+            width: 400px;
+            padding: 0 5px;
+        }
+
+        section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .lottery {
+            background-image: url('scratchme.png');
+        }
+
+        .cute-kitty {
+            width: 105px;
+        }
+
+        .work {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 50%; /* Set the aspect ratio of the slider */
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .controls {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .arrow {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #000;
+            padding: 5px;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .arrow span {
+            display: inline-block;
+        }
+
+        .arrow:hover {
+            opacity: 0.7;
+        }
+
+        .prev {
+            margin-right: auto;
+        }
+
+        .next {
+            margin-left: auto;
+        }
+
+        .arrow > img{
+            width: 50px;
+
+        }
+
+        .slider {
+            margin: 0 2vw
+        }
+
+        .work {
+            display: flex;
+        }
+
+
+        @media screen and (max-width: 768px) {
+            .tammy {
+                max-width: 70%;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .tammy {
+                max-width: 260px;
+            }
+            .cute-kitty {
+                width: 80px;
+            }
+
+            .canvas-wrapper {
+                width: 450px;
+                height: 280px;
+            }
+
+            section {
+                width: calc(100% - 24px);
+                padding: 0;
+            }
+        }
+
+
+        @media screen and (max-width: 400px) {
+            .tammy {
+                max-width: 200px;
+            }
+
+            .tammyiscute {
+                padding-bottom: 2vh;
+            }
+
+            section {
+                height: calc(100% - 35px);
+                width: calc(100% - -1px);
+            }
+
+            
+            .cute-kitty {
+                width: 80px;
+            }
+
+            .canvas-wrapper {
+                width: 385px;
+                height: 280px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+        <div class="tammyiscute">
+            <img class="cute-kitty" src="kitty.gif" style="transform: scaleX(-1);">
+            <img class="tammy" src="tammy.png" alt="">
+            <img class="cute-kitty" src="kitty.gif" alt="">
+        </div>
+
+        <div class="work">
+            <button class="arrow prev"><img src="left-arrow.png" alt=""></button>
+            <div class="slider">
+                <img class="slide active" src="images/Page 1.PNG" alt="">
+                <img class="slide" src="images/Page 2.PNG" alt="">
+                <img class="slide" src="images/Page 3.PNG" alt="">
+                <img class="slide" src="images/Page 4.PNG" alt="">
+                <img class="slide" src="images/Page 5.PNG" alt="">
+                <img class="slide" src="images/Page 6.PNG" alt="">
+                <img class="slide" src="images/Page 7.PNG" alt="">
+                <img class="slide" src="images/Page 8.PNG" alt="">
+                <img class="slide" src="images/Page 9.PNG" alt="">
+                <img class="slide" src="images/Page 10.PNG" alt="">
+                <img class="slide" src="images/Page 11.PNG" alt="">
+                <img class="slide" src="images/Page 12.PNG" alt="">
+                <img class="slide" src="images/Page 13.PNG" alt="">
+                <img class="slide" src="images/Page 14.PNG" alt="">
+                <img class="slide" src="images/Page 15.PNG" alt="">
+                <img class="slide" src="images/Project 2.png" alt="">
+<!-- 
+                <video class="slide" src="images/Video 1.mov" alt=""controls></video>
+                <video class="slide" src="images/Video 2.mov" alt=""controls></video>
+                <video class="slide" src="images/Video 3.mov" alt=""controls></video>
+                <video class="slide" src="images/Video 4.mov" alt=""controls></video>
+                <video class="slide" src="images/Video 5.mov" alt=""controls></video>
+                <video class="slide" src="images/Video 6.mp4" alt=""controls></video>
+                <video class="slide" src="images/Video 7.mp4" alt=""controls></video>
+                <video class="slide" src="images/Video 8.mp4" alt=""controls></video> -->
+            </div>
+            <button class="arrow next"><img src="right-arrow.png" alt=""></button>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript code for image slider functionality
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let currentIndex = 0;
+
+        // Function to show the current slide and hide others
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+        }
+
+        // Function to show the previous slide
+        function showPrevSlide() {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = slides.length - 1;
+            }
+            showSlide(currentIndex);
+        }
+
+        // Function to show the next slide
+        function showNextSlide() {
+            currentIndex++;
+            if (currentIndex >= slides.length) {
+                currentIndex = 0;
+            }
+            showSlide(currentIndex);
+        }
+
+        // Event listeners for the arrow buttons
+        prevBtn.addEventListener('click', showPrevSlide);
+        nextBtn.addEventListener('click', showNextSlide);
+
+        // Show the initial slide
+        showSlide(currentIndex);
+    </script>
+</body>
+</html>

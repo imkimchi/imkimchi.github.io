@@ -1,0 +1,264 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-color: rgba(1, 183, 232);
+            margin: 0;
+            cursor: url('cursor.png'), auto;
+        }
+        
+        section {
+            padding: 5vh;
+            overflow: hidden;
+        }
+        
+        .tammyiscute {
+            width: 800px;
+            padding-bottom: 5vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tammyiscute img {
+            display: inline-block;
+        }
+
+        .tammy {
+            width: 400px;
+            padding: 0 5px;
+        }
+
+        section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .lottery {
+            background-image: url('scratchme.png');
+        }
+
+        .cute-kitty {
+            width: 105px;
+        }
+
+        #canvas {
+            background: url(babam.png);
+            background-size: 100% 100%;
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .canvas-wrapper {
+            position: relative;
+            width: 800px;
+            height: 485px;
+            background-image: url('scratchme.png');
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            .tammy {
+                max-width: 70%;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .tammy {
+                max-width: 260px;
+            }
+            .cute-kitty {
+                width: 80px;
+            }
+
+            .canvas-wrapper {
+                width: 450px;
+                height: 280px;
+            }
+
+            section {
+                width: calc(100% - 24px);
+                padding: 0;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .tammy {
+                max-width: 200px;
+            }
+
+            .tammyiscute {
+                padding-bottom: 2vh;
+            }
+
+            section {
+                height: calc(100% - 35px);
+                width: calc(100% - -1px);
+            }
+
+            .cute-kitty {
+                width: 80px;
+            }
+
+            .canvas-wrapper {
+                width: 385px;
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="tammyiscute">
+            <img class="cute-kitty" src="kitty.gif" style="transform: scaleX(-1);">
+            <img class="tammy" src="tammy.png" alt="">
+            <img class="cute-kitty" src="kitty.gif" alt="">
+        </div>
+
+        <div class="canvas-wrapper">
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <script>
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            var isDown = false;
+            var radius = 15;
+            var pi2 = Math.PI * 2;
+            var images = [
+                'https://via.placeholder.com/300x100/FFFF00/000000.png',
+                'https://via.placeholder.com/300x100/FFFF00/000000.png',
+                'https://via.placeholder.com/300x100/FFFF00/000000.png',
+                'https://via.placeholder.com/300x100/FFFF00/000000.png',
+                'https://via.placeholder.com/300x100/FFFF00/000000.png',
+                'https://via.placeholder.com/300x100/FFFF00/000000.png',
+                'https://via.placeholder.com/300x100/FFFF00/000000.png',
+                'https://via.placeholder.com/300x100/FFFF00/000000.png',
+                'https://via.placeholder.com/300x100/FFFF00/000000.png'
+            ];
+
+            var loadedImages = [];
+            var scratchedImages = [];
+
+            loadImages(images, function () {
+                start();
+            });
+
+            function loadImages(imageUrls, callback) {
+                var loadedCount = 0;
+
+                imageUrls.forEach(function (url) {
+                    var image = new Image();
+
+                    image.onload = function () {
+                        loadedCount++;
+
+                        if (loadedCount === imageUrls.length) {
+                            callback();
+                        }
+                    };
+
+                    image.src = url;
+                    loadedImages.push(image);
+                    scratchedImages.push(false);
+                });
+            }
+
+            function start() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+
+                ctx.fillStyle = '#777';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                canvas.addEventListener('mousedown', handleMouseDown);
+                canvas.addEventListener('mousemove', handleMouseMove);
+                canvas.addEventListener('mouseup', handleMouseUp);
+                canvas.addEventListener('mouseout', handleMouseOut);
+            }
+
+            function handleMouseDown(e) {
+                isDown = true;
+                scratch(e.clientX, e.clientY);
+            }
+
+            function handleMouseMove(e) {
+                if (isDown) {
+                    scratch(e.clientX, e.clientY);
+                }
+            }
+
+            function handleMouseUp() {
+                isDown = false;
+                checkForWin();
+            }
+
+            function handleMouseOut() {
+                isDown = false;
+            }
+
+            function scratch(x, y) {
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath();
+                ctx.arc(x, y, radius, 0, pi2);
+                ctx.fill();
+            }
+
+            function checkForWin() {
+                var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                var pixels = imageData.data;
+                var totalPixels = pixels.length;
+                var alphaPixels = 0;
+                var scratchedPixelRatio = 0;
+
+                for (var i = 0; i < totalPixels; i += 4) {
+                    if (pixels[i + 3] === 0) {
+                        alphaPixels++;
+                    }
+                }
+
+                scratchedPixelRatio = alphaPixels / (totalPixels / 4);
+
+                if (scratchedPixelRatio > 0.5) {
+                    displayWin();
+                }
+            }
+
+            function displayWin() {
+                // Trigger the function you want when the canvas is fully scratched
+                console.log("Congratulations! You won!");
+
+                // You can also trigger different functions based on the specific image clicked
+                canvas.addEventListener('click', function (e) {
+                    var x = e.clientX - canvas.getBoundingClientRect().left;
+                    var y = e.clientY - canvas.getBoundingClientRect().top;
+
+                    for (var i = 0; i < loadedImages.length; i++) {
+                        var image = loadedImages[i];
+                        var isScratched = scratchedImages[i];
+
+                        if (isScratched && x > image.x && x < (image.x + image.width) && y > image.y && y < (image.y + image.height)) {
+                            // Call a specific function based on the clicked image
+                            console.log("Image", i + 1, "clicked!");
+                            // You can replace the console.log statements with your own custom functions
+                            break;
+                        }
+                    }
+                });
+            }
+        </script>
+    </section>
+</body>
+</html>

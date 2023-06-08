@@ -1,0 +1,360 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-color: rgba(1, 183, 232);
+            margin: 0;
+            cursor: url('cursor.png'), auto;
+        }
+        
+        section {
+            padding: 5vh;
+            overflow: hidden;
+        }
+        
+
+        .tammyiscute {
+            width: 800px;
+            padding-bottom: 5vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tammyiscute img {
+            display: inline-block;
+        }
+
+        .tammy {
+            width: 400px;
+            padding: 0 5px;
+        }
+
+        section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .lottery {
+            background-image: url('scratchme.png');
+        }
+
+        .cute-kitty {
+            width: 105px;
+        }
+
+        #canvas {
+            background: url(babam.png);
+            background-size: 100% 100%;
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .canvas-wrapper {
+            position: relative;
+            width: 800px;
+            height: 485px;
+            background-image: url('scratchme.png');
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        @media screen and (max-width: 768px) {
+            .tammy {
+                max-width: 70%;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .tammy {
+                max-width: 260px;
+            }
+            .cute-kitty {
+                width: 80px;
+            }
+
+            .canvas-wrapper {
+                width: 450px;
+                height: 280px;
+            }
+
+            section {
+                width: calc(100% - 24px);
+                padding: 0;
+            }
+        }
+
+
+        @media screen and (max-width: 400px) {
+            .tammy {
+                max-width: 200px;
+            }
+
+            .tammyiscute {
+                padding-bottom: 2vh;
+            }
+
+            section {
+                height: calc(100% - 35px);
+                width: calc(100% - -1px);
+            }
+
+            
+            .cute-kitty {
+                width: 80px;
+            }
+
+            .canvas-wrapper {
+                width: 385px;
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="tammyiscute">
+            <img class="cute-kitty" src="kitty.gif" style="transform: scaleX(-1);">
+            <img class="tammy" src="tammy.png" alt="">
+            <img class="cute-kitty" src="kitty.gif" alt="">
+        </div>
+
+        <div class="canvas-wrapper">
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <script>
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            var isDown = false;
+            var radius = 15;
+            var pi2 = Math.PI * 2;
+            var img = new Image();
+
+            img.onload = start;
+            img.src = 'won.png';
+
+            function start() {
+                resizeCanvas();
+                ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
+                ctx.globalCompositeOperation = 'destination-out';
+                canvas.addEventListener('mousedown', handleMouseDown);
+                canvas.addEventListener('mousemove', handleMouseMove);
+                window.addEventListener('mouseup', handleMouseUp);
+                canvas.addEventListener('touchstart', handleTouchStart);
+                canvas.addEventListener('touchmove', handleTouchMove);
+                canvas.addEventListener('touchend', handleTouchEnd);
+            }
+
+            function handleMouseDown(e) {
+                var pos = getXY(e);
+                if (pos.x < 200 && pos.y > canvas.height - 200) {
+                    // Redirect to another page
+                    
+                } else {
+                    isDown = true;
+                    scratch(pos.x, pos.y);
+                }
+            }
+
+            function handleMouseMove(e) {
+                if (!isDown) return;
+                var pos = getXY(e);
+                scratch(pos.x, pos.y);
+            }
+
+
+            let clicked = false
+
+            function handleMouseUp(e) {
+                isDown = false;
+
+                var isScratchingCompleted = false;
+
+                // Define the coordinates of the bottom left part
+                var bottomLeftX = 0; // X coordinate of the bottom left corner
+                var bottomLeftY = canvas.height; // Y coordinate of the bottom left corner
+
+                // Calculate the width and height of the bottom left part
+                var bottomLeftWidth = Math.floor(canvas.width * 0.5);
+                var bottomLeftHeight = Math.floor(canvas.height * 0.5);
+
+                // Get the pixel data of the bottom left part
+                var pixelData = ctx.getImageData(bottomLeftX, bottomLeftY - bottomLeftHeight, bottomLeftWidth, bottomLeftHeight).data;
+
+                // Count the number of transparent pixels
+                var transparentPixelCount = 0;
+                var totalPixelCount = pixelData.length / 4; // Each pixel consists of 4 values (RGBA)
+
+                for (var i = 0; i < pixelData.length; i += 4) {
+                    var alpha = pixelData[i + 3];
+                    if (alpha === 0) {
+                        transparentPixelCount++;
+                    }
+                }
+
+                // Calculate the percentage of transparent pixels
+                var transparencyPercentage = (transparentPixelCount / totalPixelCount) * 100;
+
+                // Check if the transparency percentage meets the threshold (35%)
+                if (transparencyPercentage >= 12) {
+                    isScratchingCompleted = true;
+                    console.log("Completed");
+                }
+
+                console.log("transparencyPercentage", transparencyPercentage, isScratchingCompleted)
+
+                var clickX = e.clientX - canvas.offsetLeft; // X coordinate of the click event relative to the canvas
+                var clickY = e.clientY - canvas.offsetTop; // Y coordinate of the click event relative to the canvas
+
+
+                
+                console.log("clickX <= bottomLeftWidth", clickX <= bottomLeftWidth, "clickX", clickX, "bottomLeftWidth", bottomLeftWidth)
+
+                
+                
+                // Check if the click is within the bottom left part
+                if (isScratchingCompleted && clickX <= bottomLeftWidth && clickY >= canvas.height - bottomLeftHeight) {
+
+                    console.log("clicked", clicked)
+
+                    if(clicked) {
+                        console.log("Redirecting...");
+                        window.location.replace('work.html');
+                    } else {
+                        clicked = true
+                    }
+                }
+            }
+
+            function handleTouchStart(e) {
+                e.preventDefault();
+                isDown = true;
+                var touch = e.touches[0];
+                var rect = canvas.getBoundingClientRect();
+                var x = touch.clientX - rect.left;
+                var y = touch.clientY - rect.top;
+                scratch(x, y);
+            }
+
+            function handleTouchMove(e) {
+                e.preventDefault();
+                if (isDown) {
+                    var touch = e.touches[0];
+                    var rect = canvas.getBoundingClientRect();
+                    var x = touch.clientX - rect.left;
+                    var y = touch.clientY - rect.top;
+                    scratch(x, y);
+                }
+            }
+
+            function handleTouchEnd(e) {
+                isDown = false;
+
+                var isScratchingCompleted = false;
+
+                // Define the coordinates of the bottom left part
+                var bottomLeftX = 0; // X coordinate of the bottom left corner
+                var bottomLeftY = canvas.height; // Y coordinate of the bottom left corner
+
+                // Calculate the width and height of the bottom left part
+                var bottomLeftWidth = Math.floor(canvas.width * 0.25);
+                var bottomLeftHeight = Math.floor(canvas.height * 0.25);
+
+                // Get the pixel data of the bottom left part
+                var pixelData = ctx.getImageData(bottomLeftX, bottomLeftY - bottomLeftHeight, bottomLeftWidth, bottomLeftHeight).data;
+
+                // Count the number of transparent pixels
+                var transparentPixelCount = 0;
+                var totalPixelCount = pixelData.length / 4; // Each pixel consists of 4 values (RGBA)
+
+                for (var i = 0; i < pixelData.length; i += 4) {
+                    var alpha = pixelData[i + 3];
+                    if (alpha === 0) {
+                        transparentPixelCount++;
+                    }
+                }
+
+                // Calculate the percentage of transparent pixels
+                var transparencyPercentage = (transparentPixelCount / totalPixelCount) * 100;
+
+                // Check if the transparency percentage meets the threshold (35%)
+                if (transparencyPercentage >= 12) {
+                    isScratchingCompleted = true;
+                    console.log("Completed");
+                }
+
+                var touch = e.changedTouches[0];
+                var rect = canvas.getBoundingClientRect();
+
+                var clickX = touch.clientX - canvas.offsetLeft; // X coordinate of the click event relative to the canvas
+                var clickY = touch.clientY - canvas.offsetTop; // Y coordinate of the click event relative to the canvas
+
+                console.log("lickX <= bottomLeftWidth", lickX <= bottomLeftWidth, "lickX", lickX, "bottomLeftWidth", bottomLeftWidth)
+
+                
+                // Check if the click is within the bottom left part
+                if (isScratchingCompleted && clickX <= bottomLeftWidth && clickY >= canvas.height - bottomLeftHeight) {
+
+                    console.log("clicked", clicked)
+
+                    if(clicked) {
+                        console.log("Redirecting...");
+                        window.location.replace('work.html');
+                    } else {
+                        clicked = true
+                    }
+                }
+            }
+
+            function getXY(e) {
+                var rect = canvas.getBoundingClientRect();
+                return {
+                    x: e.clientX - rect.left,
+                    y: e.clientY - rect.top
+                };
+            }
+
+            function scratch(x, y) {
+                ctx.beginPath();
+                ctx.arc(x, y, radius, 0, pi2);
+                ctx.fill();
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                resizeCanvas();
+                window.addEventListener('resize', resizeCanvas);
+            });
+
+            function resizeCanvas() {
+                var canvasWrapper = document.querySelector('.canvas-wrapper');
+
+                if (window.innerWidth >= 600) {
+                    canvas.width = canvasWrapper.offsetWidth - 120;
+                    canvas.height = canvasWrapper.offsetHeight - 120;
+                } else if (window.innerWidth <= 400) {
+                    canvas.width = canvasWrapper.offsetWidth - 50;
+                    canvas.height = canvasWrapper.offsetHeight - 100;
+                } else {
+                    canvas.width = canvasWrapper.offsetWidth - 90;
+                    canvas.height = canvasWrapper.offsetHeight - 80;
+                }
+
+            }
+        </script>
+    </section>
+</body>
+
+</html>
