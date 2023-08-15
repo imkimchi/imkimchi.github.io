@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
+    <!-- Add your external CSS files here -->
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            align-items: center;
+        }
+
+        .wrapper {
+            max-width: 367px;
+            width: 100%;
+            padding-top: 1vh;
+        }
+
+        .latest {
+            font-family: 'Helvetica Neue';
+            font-weight: 500;
+            margin-bottom: 2rem;
+            font-size: 48px;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        @keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+        
+        @-webkit-keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+        
+        .blink {
+            animation: blink-animation 1s steps(2, start) infinite;
+            -webkit-animation: blink-animation 1s steps(2, start) infinite;
+        }
+
+        /* Rest of your styles */
+
+        .spotify-link {
+            margin-top: 10px;
+            text-align: center;
+            overflow: hidden; /* Hide overflow */
+            white-space: nowrap; /* Prevent line breaks */
+        
+    line-height: 36px;
+}
+        
+
+       a {
+            white-space: normal;
+            font-size: 35px;
+            background: linear-gradient(to right, black, white);
+            text-decoration: underline;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: gradient-animation 2s ease infinite;
+        }
+
+
+        .marquee-container {
+            width: 100%;
+            max-width: 367px;
+            font-weight: 400;
+            overflow: hidden;
+            margin: 10px 0 20px 0;
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 10s linear infinite;
+            transform: translateX(-75%);
+        }
+
+        .marquee-item {
+            flex-shrink: 0;
+            padding: 0 15px;
+            font-size: 38px;
+        }
+
+        iframe {
+            height: 60vh;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(-75%);
+            }
+            100% {
+                transform: translateX(-175%);
+            }
+        }
+
+        @keyframes gradient-animation {
+            0%, 100% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 100% 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="latest">
+            <div>
+                <span class="title">Koar Radio. . </span>
+                <span class="blink">.</span>
+            </div>
+
+            <div class="marquee-container">
+                <div class="marquee">
+                    <div class="marquee-item">Every Tuesday, 8PM KST</div>
+                    <div class="marquee-item">Every Tuesday, 8PM KST</div>
+                    <div class="marquee-item">Every Tuesday, 8PM KST</div>
+                    <!-- Add more items as needed -->
+                </div>
+            </div>
+
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7ibyP1brs5z6nT5H8H7pBA?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <div class="spotify-link">
+                <a href="https://open.spotify.com/playlist/7ibyP1brs5z6nT5H8H7pBA?si=a5be2b6f50e74928">https://open.spotify.com/playlist/7ibyP1brs5z6nT5H8H7pBA?si=a5be2b6f50e74928</a>
+            </div>
+        </div>
+        <div class="previous">
+            
+        </div>
+    </div>
+</body>
+</html>
