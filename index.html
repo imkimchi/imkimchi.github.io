@@ -11,6 +11,15 @@
     <meta property="og:url" content="https://koarkoarkoar.com">
     <meta property="og:type" content="website">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HXV4TRHVZ5"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-HXV4TRHVZ5');
+    </script>
 
     <style>
         body {
@@ -31,10 +40,12 @@
         }
 
         @media only screen and (max-width: 768px) {
-         .wrapper {
-            width: 100%;
-            max-width: 100%;
+         .wrapper, .marquee-container {
+            width: 100%!important;
+            max-width: 100%!important;
          }
+
+         
         }
 
 
@@ -51,10 +62,12 @@
 
         .latest {
             background: linear-gradient(180deg, white, #d7150c);
+            padding-bottom: 4rem;
         }
 
         .previous {
             background: linear-gradient(360deg, #6bff4f, transparent);
+            padding: 4rem 1rem 4rem 1rem;
         }
 
         @keyframes blink-animation {
@@ -81,9 +94,8 @@
             text-align: center;
             overflow: hidden; /* Hide overflow */
             white-space: nowrap; /* Prevent line breaks */
-        
-    line-height: 36px;
-}
+            line-height: 36px;
+        }
         
 
        a {
@@ -94,8 +106,7 @@
             -webkit-background-clip: text;
             color: transparent;
             animation: gradient-animation 2s ease infinite;
-
-            text-wrap: nowrap;
+            white-space: nowrap;
             display: flex;
         }
 
@@ -165,9 +176,6 @@
             color: #fff!important;
             padding: 4rem 1rem;
         }
-
-
-        
         
         img {
             width: 100%;
@@ -227,7 +235,7 @@
         .gif-text {
             font-size: 48px;
             background: linear-gradient(180deg, #0019ff, transparent);
-            padding: 1rem 1rem;
+            padding: 4rem 1rem;
         }
 
 
@@ -252,7 +260,7 @@
             </div>
 
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/44CkHAH1FbmTMdodIRNgjf?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <div class="spotify-link">
+            <div class="spotify-link" style="margin-top: 2rem;">
                 <a href="https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label">https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label</a>
             </div>
             
@@ -264,7 +272,7 @@
             </div> -->
             <!-- <div style="padding: 16px; margin -top: -87px;"><div class="bg-primary" style="margin-top: 0px; height: 23px;"></div><div class="bg-primary" style="margin-top: 1px; height: 22px;"></div><div class="bg-primary" style="margin-top: 2px; height: 21px;"></div><div class="bg-primary" style="margin-top: 3px; height: 20px;"></div><div class="bg-primary" style="margin-top: 4px; height: 19px;"></div><div class="bg-primary" style="margin-top: 5px; height: 18px;"></div><div class="bg-primary" style="margin-top: 6px; height: 17px;"></div><div class="bg-primary" style="margin-top: 7px; height: 16px;"></div><div class="bg-primary" style="margin-top: 8px; height: 15px;"></div><div class="bg-primary" style="margin-top: 9px; height: 14px;"></div><div class="bg-primary" style="margin-top: 10px; height: 13px;"></div><div class="bg-primary" style="margin-top: 11px; height: 12px;"></div><div class="bg-primary" style="margin-top: 12px; height: 11px;"></div><div class="bg-primary" style="margin-top: 13px; height: 10px;"></div><div class="bg-primary" style="margin-top: 14px; height: 9px;"></div><div class="bg-primary" style="margin-top: 15px; height: 8px;"></div><div class="bg-primary" style="margin-top: 16px; height: 7px;"></div><div class="bg-primary" style="margin-top: 17px; height: 6px;"></div><div class="bg-primary" style="margin-top: 18px; height: 5px;"></div><div class="bg-primary" style="margin-top: 19px; height: 4px;"></div><div class="bg-primary" style="margin-top: 20px; height: 3px;"></div><div class="bg-primary" style="margin-top: 21px; height: 2px;"></div><div class="bg-primary" style="margin-top: 22px; height: 1px;"></div><div class="bg-primary" style="margin-top: 23px; height: 0px;"></div></div> -->
 
-            <span class="listen">Listen</span>
+            <span class="listen" style="margin-top: 2rem;">Listen</span>
             <span class="listen">Listen</span>
             <span class="listen">Listen</span>
             <span class="listen">Listen</span>
@@ -293,14 +301,7 @@
         <div class="gif">
             <img loading="lazy" src="https://64.media.tumblr.com/4b55b5811e31dd0aaaa32cfcf3b226bc/6d1a6e6236d47446-7f/s1280x1920/10ae8ddeb8b318d2cd18b4841f93ac758cd0f132.gifv" />
             <img loading="lazy" src="https://64.media.tumblr.com/cbb7d350cce77a33ace9ef4dd31e4784/6d1a6e6236d47446-ed/s1280x1920/416104fb84e4c5f972c285f4bb3d7dca97d9dbfd.gifv" />
-            <div class="gif-text">COME LISTEN
-                .
-                .
-                .
-                .
-                .
-                .
-                .
+            <div class="gif-text">COME LISTEN . . . <br/>
 
                 <div class="spotify-link">
                     <a href="https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label">https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label</a>
