@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -14,316 +15,333 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HXV4TRHVZ5"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
 
-    gtag('config', 'G-HXV4TRHVZ5');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-HXV4TRHVZ5');
+
     </script>
 
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
-            align-items: center;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        min-height: 100vh;
+        align-items: center;
+      }
 
-        .wrapper {
-            max-width: 367px;
-            width: 100%;
-            padding-top: 1vh;
-
-            
-        }
-
-        @media only screen and (max-width: 768px) {
-         .wrapper, .marquee-container {
-            width: 100%!important;
-            max-width: 100%!important;
-         }
-
-         
-        }
+      .wrapper {
+        max-width: 367px;
+        width: 100%;
+        padding-top: 1vh;
 
 
-        
+      }
 
-        .latest, .previous {
-            font-family: 'Helvetica Neue';
-            font-weight: 500;
-            font-size: 48px;
-            display: flex;
-            flex-direction: column;
-            padding: 1rem;
-        }
+      @media only screen and (max-width: 768px) {
 
-        .latest {
-            background: linear-gradient(180deg, white, #d7150c);
-            padding-bottom: 4rem;
-        }
-
-        .previous {
-            background: linear-gradient(360deg, #6bff4f, transparent);
-            padding: 4rem 1rem 4rem 1rem;
-        }
-
-        @keyframes blink-animation {
-            to {
-                visibility: hidden;
-            }
-        }
-        
-        @-webkit-keyframes blink-animation {
-            to {
-                visibility: hidden;
-            }
-        }
-        
-        .blink {
-            animation: blink-animation 1s steps(2, start) infinite;
-            -webkit-animation: blink-animation 1s steps(2, start) infinite;
-        }
-
-        /* Rest of your styles */
-
-        .spotify-link {
-            margin-top: 10px;
-            text-align: center;
-            overflow: hidden; /* Hide overflow */
-            white-space: nowrap; /* Prevent line breaks */
-            line-height: 36px;
-        }
-        
-
-       a {
-            white-space: normal;
-            font-size: 35px;
-            background: linear-gradient(to right, white, #ff0110);
-            text-decoration: underline;
-            -webkit-background-clip: text;
-            color: transparent;
-            animation: gradient-animation 2s ease infinite;
-            white-space: nowrap;
-            display: flex;
-        }
-
-
+        .wrapper,
         .marquee-container {
-            width: 100%;
-            max-width: 400px;
-            font-weight: 400;
-            overflow: hidden;
-            margin: 10px 0 20px 0;
-        }
-
-        .marquee {
-            display: flex;
-            animation: marquee 10s linear infinite;
-            transform: translateX(-75%);
-        }
-
-        .marquee-item {
-            flex-shrink: 0;
-            padding: 0 15px;
-            font-size: 25px;
-        }
-
-        iframe {
-            height: 55vh;
-        }
-
-        .radio {
-            color: white;
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(-75%);
-            }
-            100% {
-                transform: translateX(-175%);
-            }
-        }
-
-        @keyframes gradient-animation {
-            0%, 100% {
-                background-position: 0 0;
-            }
-            50% {
-                background-position: 100% 0;
-            }
+          width: 100% !important;
+          max-width: 100% !important;
         }
 
 
-        * {
-            font-family: "Helvetica Neue";
-            letter-spacing: -0.5px;
+      }
+
+
+
+
+      .latest,
+      .previous {
+        font-family: 'Helvetica Neue';
+        font-weight: 500;
+        font-size: 48px;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      .latest {
+        background: linear-gradient(180deg, white, #d7150c);
+        padding-bottom: 4rem;
+      }
+
+      .previous {
+        background: linear-gradient(360deg, #6bff4f, transparent);
+        padding: 4rem 1rem 4rem 1rem;
+      }
+
+      @keyframes blink-animation {
+        to {
+          visibility: hidden;
+        }
+      }
+
+      @-webkit-keyframes blink-animation {
+        to {
+          visibility: hidden;
+        }
+      }
+
+      .blink {
+        animation: blink-animation 1s steps(2, start) infinite;
+        -webkit-animation: blink-animation 1s steps(2, start) infinite;
+      }
+
+      /* Rest of your styles */
+
+      .spotify-link {
+        margin-top: 10px;
+        text-align: center;
+        overflow: hidden;
+        /* Hide overflow */
+        white-space: nowrap;
+        /* Prevent line breaks */
+        line-height: 36px;
+      }
+
+
+      a {
+        white-space: normal;
+        font-size: 35px;
+        background: linear-gradient(to right, white, #ff0110);
+        text-decoration: underline;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: gradient-animation 2s ease infinite;
+        white-space: nowrap;
+        display: flex;
+      }
+
+
+      .marquee-container {
+        width: 100%;
+        max-width: 400px;
+        font-weight: 400;
+        overflow: hidden;
+        margin: 10px 0 20px 0;
+      }
+
+      .marquee {
+        display: flex;
+        animation: marquee 10s linear infinite;
+        transform: translateX(-75%);
+      }
+
+      .marquee-item {
+        flex-shrink: 0;
+        padding: 0 15px;
+        font-size: 25px;
+      }
+
+      iframe {
+        height: 55vh;
+      }
+
+      .radio {
+        color: white;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(-75%);
         }
 
-        .bg-primary {
-            background-color: black;
-        }
-
-        .last {
-            background: linear-gradient(360deg, #230c2b, transparent);
-        }
-
-        .previous.real {
-            background: linear-gradient(360deg, #ffef00, transparent);
-            color: #fff!important;
-            padding: 4rem 1rem;
-        }
-        
-        img {
-            width: 100%;
-        }
-
-        .last span {
-            font-size: 24px;
-            color: #ff4301!important;
-            display: flex;
-            padding: 2rem 1rem;
-        }
-
-        .real.previous > iframe {
-            height: 89px;
-        }
-
-        @keyframes blink {
-  0% {
-            opacity: 1;
-        }
-        50% {
-            opacity: 0;
-        }
         100% {
-            opacity: 1;
+          transform: translateX(-175%);
         }
-        }
+      }
 
-        .blinking-text {
+      @keyframes gradient-animation {
 
-    margin-top: 2rem;
-        animation: blink 1s infinite; /* Adjust the duration as needed */
-        }
-
-        @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-
-        .sexy {
-            animation: fadeIn 4s infinite;
+        0%,
+        100% {
+          background-position: 0 0;
         }
 
-        .gif {
-            color: #ffc800!important;
-            /* padding: 4rem 0; */
-            width: 100%;
-            display: flex;
-            flex-direction: column;
+        50% {
+          background-position: 100% 0;
+        }
+      }
+
+
+      * {
+        font-family: "Helvetica Neue";
+        letter-spacing: -0.5px;
+      }
+
+      .bg-primary {
+        background-color: black;
+      }
+
+      .last {
+        background: linear-gradient(360deg, #230c2b, transparent);
+      }
+
+      .previous.real {
+        background: linear-gradient(360deg, #ffef00, transparent);
+        color: #fff !important;
+        padding: 4rem 1rem;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .last span {
+        font-size: 24px;
+        color: #ff4301 !important;
+        display: flex;
+        padding: 2rem 1rem;
+      }
+
+      .real.previous>iframe {
+        height: 89px;
+      }
+
+      @keyframes blink {
+        0% {
+          opacity: 1;
         }
 
-        .gif-text {
-            font-size: 48px;
-            background: linear-gradient(180deg, #0019ff, transparent);
-            padding: 4rem 1rem;
+        50% {
+          opacity: 0;
         }
 
+        100% {
+          opacity: 1;
+        }
+      }
 
+      .blinking-text {
+
+        margin-top: 2rem;
+        animation: blink 1s infinite;
+        /* Adjust the duration as needed */
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+
+      .sexy {
+        animation: fadeIn 4s infinite;
+      }
+
+      .gif {
+        color: #ffc800 !important;
+        /* padding: 4rem 0; */
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .gif-text {
+        font-size: 48px;
+        background: linear-gradient(180deg, #0019ff, transparent);
+        padding: 4rem 1rem;
+      }
 
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
     <div class="wrapper">
-        <div class="latest">
-            <div>
-                <span class="title">Koar Radio. . </span>
-                <span class="blink">.</span>
-            </div>
-
-            <div class="marquee-container">
-                <div class="marquee">
-                    <div class="marquee-item">Every Tuesday, 8PM KST</div>
-                    <div class="marquee-item">Every Tuesday, 8PM KST</div>
-                    <div class="marquee-item">Every Tuesday, 8PM KST</div>
-                    <!-- Add more items as needed -->
-                </div>
-            </div>
-
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4OpeTueoZGl9ywso28C3tP?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <div class="spotify-link" style="margin-top: 2rem;">
-                <a href="https://open.spotify.com/playlist/4OpeTueoZGl9ywso28C3tP?si=567a90ad8d9140b9">
-                    https://open.spotify.com/playlist/4OpeTueoZGl9ywso28C3tP?si=567a90ad8d9140b9</a>
-            </div>
-            
-
-
-
-            
+      <div class="latest">
+        <div>
+          <span class="title">Koar Radio. . </span>
+          <span class="blink">.</span>
         </div>
-        <div class="previous">
-            <iframe width="100%" style="border-radius: 8px;" src="https://www.youtube.com/embed/videoseries?si=h_8W7eN114ALxMOw&amp;list=PL6-Z_NoidxHe_GN5ENftQpJNo8Q8aBpx6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <!-- <div class="spotify-link">
+
+        <div class="marquee-container">
+          <div class="marquee">
+            <div class="marquee-item">Every Tuesday, 8PM KST</div>
+            <div class="marquee-item">Every Tuesday, 8PM KST</div>
+            <div class="marquee-item">Every Tuesday, 8PM KST</div>
+            <!-- Add more items as needed -->
+          </div>
+        </div>
+
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4OpeTueoZGl9ywso28C3tP?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <div class="spotify-link" style="margin-top: 2rem;">
+          <a href="https://open.spotify.com/playlist/4OpeTueoZGl9ywso28C3tP?si=567a90ad8d9140b9">
+            https://open.spotify.com/playlist/4OpeTueoZGl9ywso28C3tP?si=567a90ad8d9140b9</a>
+        </div>
+
+
+
+
+
+      </div>
+      <div class="previous">
+        <iframe width="100%" style="border-radius: 8px;" src="https://www.youtube.com/embed/videoseries?si=h_8W7eN114ALxMOw&amp;list=PL6-Z_NoidxHe_GN5ENftQpJNo8Q8aBpx6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <!-- <div class="spotify-link">
                 <a href="https://www.youtube.com/playlist?list=PL6-Z_NoidxHe_GN5ENftQpJNo8Q8aBpx6">https://www.youtube.com/playlist?list=PL6-Z_NoidxHe_GN5ENftQpJNo8Q8aBpx6</a>
             </div> -->
-            <!-- <div style="padding: 16px; margin -top: -87px;"><div class="bg-primary" style="margin-top: 0px; height: 23px;"></div><div class="bg-primary" style="margin-top: 1px; height: 22px;"></div><div class="bg-primary" style="margin-top: 2px; height: 21px;"></div><div class="bg-primary" style="margin-top: 3px; height: 20px;"></div><div class="bg-primary" style="margin-top: 4px; height: 19px;"></div><div class="bg-primary" style="margin-top: 5px; height: 18px;"></div><div class="bg-primary" style="margin-top: 6px; height: 17px;"></div><div class="bg-primary" style="margin-top: 7px; height: 16px;"></div><div class="bg-primary" style="margin-top: 8px; height: 15px;"></div><div class="bg-primary" style="margin-top: 9px; height: 14px;"></div><div class="bg-primary" style="margin-top: 10px; height: 13px;"></div><div class="bg-primary" style="margin-top: 11px; height: 12px;"></div><div class="bg-primary" style="margin-top: 12px; height: 11px;"></div><div class="bg-primary" style="margin-top: 13px; height: 10px;"></div><div class="bg-primary" style="margin-top: 14px; height: 9px;"></div><div class="bg-primary" style="margin-top: 15px; height: 8px;"></div><div class="bg-primary" style="margin-top: 16px; height: 7px;"></div><div class="bg-primary" style="margin-top: 17px; height: 6px;"></div><div class="bg-primary" style="margin-top: 18px; height: 5px;"></div><div class="bg-primary" style="margin-top: 19px; height: 4px;"></div><div class="bg-primary" style="margin-top: 20px; height: 3px;"></div><div class="bg-primary" style="margin-top: 21px; height: 2px;"></div><div class="bg-primary" style="margin-top: 22px; height: 1px;"></div><div class="bg-primary" style="margin-top: 23px; height: 0px;"></div></div> -->
+        <!-- <div style="padding: 16px; margin -top: -87px;"><div class="bg-primary" style="margin-top: 0px; height: 23px;"></div><div class="bg-primary" style="margin-top: 1px; height: 22px;"></div><div class="bg-primary" style="margin-top: 2px; height: 21px;"></div><div class="bg-primary" style="margin-top: 3px; height: 20px;"></div><div class="bg-primary" style="margin-top: 4px; height: 19px;"></div><div class="bg-primary" style="margin-top: 5px; height: 18px;"></div><div class="bg-primary" style="margin-top: 6px; height: 17px;"></div><div class="bg-primary" style="margin-top: 7px; height: 16px;"></div><div class="bg-primary" style="margin-top: 8px; height: 15px;"></div><div class="bg-primary" style="margin-top: 9px; height: 14px;"></div><div class="bg-primary" style="margin-top: 10px; height: 13px;"></div><div class="bg-primary" style="margin-top: 11px; height: 12px;"></div><div class="bg-primary" style="margin-top: 12px; height: 11px;"></div><div class="bg-primary" style="margin-top: 13px; height: 10px;"></div><div class="bg-primary" style="margin-top: 14px; height: 9px;"></div><div class="bg-primary" style="margin-top: 15px; height: 8px;"></div><div class="bg-primary" style="margin-top: 16px; height: 7px;"></div><div class="bg-primary" style="margin-top: 17px; height: 6px;"></div><div class="bg-primary" style="margin-top: 18px; height: 5px;"></div><div class="bg-primary" style="margin-top: 19px; height: 4px;"></div><div class="bg-primary" style="margin-top: 20px; height: 3px;"></div><div class="bg-primary" style="margin-top: 21px; height: 2px;"></div><div class="bg-primary" style="margin-top: 22px; height: 1px;"></div><div class="bg-primary" style="margin-top: 23px; height: 0px;"></div></div> -->
 
-            <span class="listen" style="margin-top: 2rem;">Listen</span>
-            <span class="listen">Listen</span>
-            <span class="listen">Listen</span>
-            <span class="listen">Listen</span>
-            <span class="listen">Listen</span>
+        <span class="listen" style="margin-top: 2rem;">Listen</span>
+        <span class="listen">Listen</span>
+        <span class="listen">Listen</span>
+        <span class="listen">Listen</span>
+        <span class="listen">Listen</span>
 
-            <span class="radio">Koar Radio</span>
-            <span class="radio">Koar Radio</span>
-            <span class="radio">Koar Radio</span>
-            <span class="radio">Koar Radio</span>
-            <span class="radio">Koar Radio</span>
+        <span class="radio">Koar Radio</span>
+        <span class="radio">Koar Radio</span>
+        <span class="radio">Koar Radio</span>
+        <span class="radio">Koar Radio</span>
+        <span class="radio">Koar Radio</span>
+      </div>
+
+      <div class="real previous">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1W0bfIsFfWXfpGC2eAMGuV?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7ibyP1brs5z6nT5H8H7pBA?utm_source=generator" width="100%" height="89" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3D2uCJIO3ZzTMenporBbc7?utm_source=generator&theme=0" width="100%" height="89" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1mOowooFRLzc5vGmrrwrke?utm_source=generator&theme=0" width="100%" height="89" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/44CkHAH1FbmTMdodIRNgjf?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <span class="blinking-text">GO SAVE</span>
+
+      </div>
+
+      <div class="last">
+        <img loading="lazy" src="https://cdn.sanity.io/images/wmq4hf8k/production/57b156b5908ea960c07457f995c872962fe34836-3000x2000.jpg?w=1920&q=75&fit=clip&auto=format" />
+        <span class="sexy">SEOUL RADIO SPOTIFY DANCE MUSIC FREEDOM LIFESTYLE ARCHIVE SEOUL RADIO SPOTIFY DANCE MUSIC FREEDOM LIFESTYLE ARCHIVE SEOUL RADIO SPOTIFY DANCE MUSIC FREEDOM LIFESTYLE ARCHIVE</span>
+      </div>
+
+      <div class="gif">
+        <img loading="lazy" src="https://64.media.tumblr.com/4b55b5811e31dd0aaaa32cfcf3b226bc/6d1a6e6236d47446-7f/s1280x1920/10ae8ddeb8b318d2cd18b4841f93ac758cd0f132.gifv" />
+        <img loading="lazy" src="https://64.media.tumblr.com/cbb7d350cce77a33ace9ef4dd31e4784/6d1a6e6236d47446-ed/s1280x1920/416104fb84e4c5f972c285f4bb3d7dca97d9dbfd.gifv" />
+        <div class="gif-text">COME LISTEN . . . <br />
+
+          <div class="spotify-link">
+            <a href="https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label">https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label</a>
+          </div>
+          <div class="spotify-link">
+            <a href="https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label">https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label</a>
+          </div>
+          <div class="spotify-link">
+            <a href="https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label">https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label</a>
+          </div>
         </div>
+      </div>
 
-        <div class="real previous">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1W0bfIsFfWXfpGC2eAMGuV?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7ibyP1brs5z6nT5H8H7pBA?utm_source=generator" width="100%" height="89" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3D2uCJIO3ZzTMenporBbc7?utm_source=generator&theme=0" width="100%" height="89" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1mOowooFRLzc5vGmrrwrke?utm_source=generator&theme=0" width="100%" height="89" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/44CkHAH1FbmTMdodIRNgjf?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <span class="blinking-text">GO SAVE</span>
 
-        </div>
-
-        <div class="last">
-            <img loading="lazy" src="https://cdn.sanity.io/images/wmq4hf8k/production/57b156b5908ea960c07457f995c872962fe34836-3000x2000.jpg?w=1920&q=75&fit=clip&auto=format" />
-            <span class="sexy">SEOUL RADIO SPOTIFY DANCE MUSIC FREEDOM LIFESTYLE ARCHIVE SEOUL RADIO SPOTIFY DANCE MUSIC FREEDOM LIFESTYLE ARCHIVE SEOUL RADIO SPOTIFY DANCE MUSIC FREEDOM LIFESTYLE ARCHIVE</span>
-        </div>
-
-        <div class="gif">
-            <img loading="lazy" src="https://64.media.tumblr.com/4b55b5811e31dd0aaaa32cfcf3b226bc/6d1a6e6236d47446-7f/s1280x1920/10ae8ddeb8b318d2cd18b4841f93ac758cd0f132.gifv" />
-            <img loading="lazy" src="https://64.media.tumblr.com/cbb7d350cce77a33ace9ef4dd31e4784/6d1a6e6236d47446-ed/s1280x1920/416104fb84e4c5f972c285f4bb3d7dca97d9dbfd.gifv" />
-            <div class="gif-text">COME LISTEN . . . <br/>
-
-                <div class="spotify-link">
-                    <a href="https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label">https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label</a>
-                </div>
-                <div class="spotify-link">
-                    <a href="https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label">https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label</a>
-                </div>
-                <div class="spotify-link">
-                    <a href="https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label">https://open.spotify.com/playlist/44CkHAH1FbmTMdodIRNgjf?si=e394bd90482f45d5label</a>
-                </div>
-            </div>
-        </div>
-
-        
     </div>
-    
-</body>
+
+  </body>
+
 </html>
